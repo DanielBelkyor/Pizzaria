@@ -1,15 +1,9 @@
 <?php
 
 class Usuario{
-    private $id;
-    private $nome;
+    protected $id;
+    protected $nome;
+ 
 
-    function getId(){
-        return $this->id;
-    }
-
-    function setId($id){
-        $this->$id = $id;
-        return $this;
-    }
+  
 }

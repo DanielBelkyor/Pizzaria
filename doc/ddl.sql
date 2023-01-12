@@ -9,7 +9,9 @@ create table pizza(
 	no_pizza varchar(150),
 	de_pizza varchar(350),
 	vl_pizza float,
-	dt_cadastro datetime
+	dt_cadastro datetime,
+	no_f
+	
 );
 
 create table ingrediente(
