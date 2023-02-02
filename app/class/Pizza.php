@@ -1,12 +1,13 @@
 <?php
 
 class Pizza{
-    protected $id;
-    protected $nome;
-	protected $description;
-    protected $valor;
-    protected $DataHora;
+    private $id;
+    private $nome;
+	private $description;
+    private $valor;
+    private $DataHora;
 
+	private $ingredientes;
 
 	/**
 	 * @return mixed
@@ -87,4 +88,21 @@ class Pizza{
 		$this->description = $description;
 		return $this;
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getIngredientes() {
+		return $this->ingredientes;
+	}
+	
+	/**
+	 * @param mixed $ingredientes 
+	 * @return self
+	 */
+	public function setIngredientes(Ingrediente $ingrediente): self {
+		$this->ingredientes[] = $ingrediente;
+		return $this;
+	}
+
 }

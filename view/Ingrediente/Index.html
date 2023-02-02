@@ -1,0 +1,71 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Cadastra Ingrediente</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Cadastro de Ingrediente</h2>
+  <form action="index.php?action=save" method="post" >
+    <div class="form-group">
+      <label for="email">Nome:</label>
+      <input type="text" class="form-control" id="no_ingrediente" placeholder="Enter email" name="no_ingrediente">
+      <input type="hidden" name="action" value="salvar" id="action">
+    </div>
+    <button type="button" onclick="save()" class="btn btn-default">Gravar</button>
+  </form>
+  <div class="row">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody id="ingredientes">
+
+    </tbody>
+  </div>
+</div>
+
+</body>
+</html>
+
+<script>
+    
+    function save(){
+        var ingrediente = $('#no_ingrediente').val()
+        if(ingrediente != ""){
+            $.post('../../app/service/IngredienteService.php?action=save', {no_ingrediente: ingrediente}, function(data){
+                console.log(data.sucesso)
+            })
+        }
+    }
+    function listar(){
+        $.get('../../app/service/IngredienteService.php?action=listar', function(data){
+
+            var json = eval('(' + data + ')') ;
+            var table = '';
+            $.each(json, function(key,val){
+              console.log(val.no_ingrediente+ ' --'  + val.id )
+            })
+            $('#ingredientes').html(table);
+          })
+    }
+
+    $( document ).ready(function() {
+      listar();
+       
+    });
+
+</script>

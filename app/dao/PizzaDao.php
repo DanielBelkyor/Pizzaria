@@ -40,13 +40,19 @@ class PizzaDao{
             $pizza->setId($row['id']);
             $pizza->setNome($row['no_pizza']);
             $pizza->setValor($row['vl_pizza']);
+
+           // $pizza->setIngredientes();
         }
 
         return $pizza;
 
     }
 
-    public function getTodas()
+    public function getIngredientesPizza(){
+
+    }
+
+    public function getPizzas()
     {
         $pizzas  = [];
 
